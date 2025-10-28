@@ -7,92 +7,139 @@ body, html, #root {
   color: white;
 }
 
-.game-container {
+.min-h-screen {
+  min-height: 100vh;
+}
+.flex {
   display: flex;
-  height: 100vh;
 }
 
-.left-section, .right-section {
+left-section,
+section {
   position: relative;
   width: 50%;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  text-align: center;
+  flex-direction: column;
+}
+.absolute {
+  position: absolute;
+}
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.bg-cover {
+  background-size: cover;
+}
+.bg-center {
+  background-position: center;
+}
+.filter {
+  filter: brightness(0.5);
+}
+
+.relative {
+  position: relative;
+}
+.z-10 {
+  z-index: 10;
+}
+.text-white {
+  color: white;
+}
+.text-center {
   text-align: center;
 }
-
-.left-section::before, .right-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.5);
-  z-index: 0;
-}
-
-.left-content, .right-content {
-  position: relative;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.4);
+.p-8 {
   padding: 2rem;
+}
+.max-w-sm {
+  max-width: 22rem;
+}
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.bg-opacity-40 {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.rounded-xl {
   border-radius: 1rem;
+}
+.p-6 {
+  padding: 1.5rem;
+}
+.backdrop-blur-sm {
   backdrop-filter: blur(6px);
-  max-width: 320px;
 }
 
-h3 {
-  font-size: 1.8rem;
+.text-2xl {
+  font-size: 1.5rem;
+}
+.font-bold {
   font-weight: bold;
-  margin-bottom: 0.5rem;
 }
-
-p {
-  margin: 0.5rem 0;
-  opacity: 0.9;
+.text-lg {
+  font-size: 1.125rem;
 }
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+.font-mono {
+  font-family: monospace;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mt-4 {
   margin-top: 1rem;
+}
+.opacity-80 {
+  opacity: 0.8;
+}
+.opacity-90 {
+  opacity: 0.9;
 }
 
 button {
   padding: 0.75rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   color: white;
-  font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
+  font-size: 1rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
 button:hover {
   transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.score {
-  margin-top: 1rem;
-  font-weight: bold;
+.flex-col {
+  flex-direction: column;
+}
+.gap-4 {
+  gap: 1rem;
+}
+.justify-center {
+  justify-content: center;
+}
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
-.message {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  display: inline-block;
+.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.1);
 }
-
-.left-section::before {
-  background-image: url('https://source.unsplash.com/featured/?technology');
+.rounded-md {
+  border-radius: 0.375rem;
 }
-
-.right-section::before {
-  background-image: url('https://source.unsplash.com/featured/?city');
+.text-sm {
+  font-size: 0.875rem;
+}
+.p-3 {
+  padding: 0.75rem;
 }
