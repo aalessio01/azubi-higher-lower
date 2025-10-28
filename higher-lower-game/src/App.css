@@ -1,50 +1,98 @@
-body {
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: system-ui, sans-serif;
   background-color: #111;
   color: white;
-  font-family: system-ui, sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 2rem;
 }
 
-h1 {
-  margin-bottom: 2rem;
+.game-container {
+  display: flex;
+  height: 100vh;
 }
 
-.cards {
+.left-section, .right-section {
+  position: relative;
+  width: 50%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 1rem;
+  align-items: center;
+  text-align: center;
 }
 
-.card {
-  background: #222;
-  padding: 1.5rem;
+.left-section::before, .right-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+  z-index: 0;
+}
+
+.left-content, .right-content {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
   border-radius: 1rem;
-  width: 150px;
+  backdrop-filter: blur(6px);
+  max-width: 320px;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin: 0.5rem 0;
+  opacity: 0.9;
 }
 
 .buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 button {
-  background: #444;
-  color: white;
-  border: none;
   padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
   cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
 }
 
 button:hover {
-  background: #666;
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .score {
   margin-top: 1rem;
   font-weight: bold;
+}
+
+.message {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  display: inline-block;
+}
+
+.left-section::before {
+  background-image: url('https://source.unsplash.com/featured/?technology');
+}
+
+.right-section::before {
+  background-image: url('https://source.unsplash.com/featured/?city');
 }

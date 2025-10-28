@@ -1,4 +1,6 @@
 export interface Item {
-  name: string;
-  value: number;
+    id: number;
+    name: string;
+    value: number;
+    imageUrl: string;
 }
