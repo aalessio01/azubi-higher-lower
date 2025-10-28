@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { data } from "./data";
+import type { Item } from "./types";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [score, setScore] = useState(0);
+  const [left, setLeft] = useState<Item>(() => randomItem());
+  const [right, setRight] = useState<Item>(() => randomItem());
+
+  function randomItem(): Item {
+    return data[Math.floor(Math.random() * data.length)];
+  }
+
+  function nextRound(isHigher: boolean) {
+    const correct =
+      (isHigher && right.value > left.value) ||
+      (!isHigher && right.value < left.value);
+
+    if (correct) {
+      setScore(score + 1);
+      setLeft(right);
+      setRight(randomItem());
+    } else {
+      alert(`Game Over! Dein Score: ${score}`);
+      setScore(0);
+      setLeft(randomItem());
+      setRight(randomItem());
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="game">
+      <h1>Higher Lower Game</h1>
+
+      <div className="cards">
+        <div className="card">
+          <h2>{left.name}</h2>
+          <p>{left.value}</p>
+        </div>
+        <div className="card">
+          <h2>{right.name}</h2>
+          <p>???</p>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <div className="buttons">
+        <button onClick={() => nextRound(true)}>Higher</button>
+        <button onClick={() => nextRound(false)}>Lower</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <p className="score">Score: {score}</p>
+    </div>
+  );
 }
 
-export default App
+export default App;
