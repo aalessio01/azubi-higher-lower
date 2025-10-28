@@ -3,30 +3,35 @@ import { data } from "./data";
 import type { Item } from "./types";
 import "./App.css";
 
+function randomItem(excludeId?: number): Item {
+  const pool = data.filter(item => item.id !== excludeId);
+  if (pool.length === 0) return data[0];
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+const initialLeft = randomItem(-1);
+const initialRight = randomItem(initialLeft.id);
+
 export default function App(): JSX.Element {
-const [left, setLeft] = useState<Item>(() => randomItem());
-const [right, setRight] = useState<Item>(() => randomItem(left.id));
+const [left, setLeft] = useState<Item>(initialLeft);
+const [right, setRight] = useState<Item>(initialRight);
 const [score, setScore] = useState<number>(0);
 const [message, setMessage] = useState<string>("");
-
-  function randomItem(excludeId?: number): Item {
-    const pool = data.filter((d) => d.id !== excludeId);
-    return pool[Math.floor(Math.random() * pool.length)];
-  }
 
   function nextRound(isHigher: boolean) {
   const correct = (isHigher && right.value > left.value) || (!isHigher && right.value < left.value);
 
     if (correct) {
       setScore((s) => s + 1);
-      setMessage("Richtig! 🎉");
+      setMessage("Richtig!");
       setLeft(right);
       setRight(randomItem(right.id));
     } else {
-      setMessage(`Falsch — Game Over! Dein Score: ${score}`);
+      setMessage("Falsch — Game Over! Dein Score: ${score}");
       setScore(0);
-      setLeft(randomItem());
-      setRight(randomItem());
+      const newLeft = randomItem(-1);
+      setLeft(newLeft);
+      setRight(randomItem(newLeft.id));
     }
   
   setTimeout(() => setMessage(""), 1800);
