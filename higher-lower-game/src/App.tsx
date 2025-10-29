@@ -53,7 +53,7 @@ export default function App(): JSX.Element {
     return (
       <div className="quiz-container">
         <h2 className="question">Quiz beendet!</h2>
-        <p className="score-end">Fragen beantwortet: {score}/?</p>
+        <p className="score-end">Fragen beantwortet: {score}/4</p>
         <button className="reset-btn" onClick={handleResetQuiz}>
           Erneut starten
         </button>
@@ -85,7 +85,7 @@ export default function App(): JSX.Element {
           Erneut Versuchen
         </button>
       )}
-      <div className="score">Beantwortete Fragen: {score}/?</div>
+      <div className="score">Beantwortete Fragen: {score}/4</div>
     </div>
   );
 }
