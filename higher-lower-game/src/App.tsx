@@ -27,14 +27,14 @@ const [message, setMessage] = useState<string>("");
       setLeft(right);
       setRight(randomItem(right.id));
     } else {
-      setMessage("Falsch — Game Over! Dein Score: ${score}");
+      setMessage(`Falsch — Game Over! Dein Score: ${score}`);
       setScore(0);
       const newLeft = randomItem(-1);
       setLeft(newLeft);
       setRight(randomItem(newLeft.id));
     }
   
-  setTimeout(() => setMessage(""), 1800);
+  setTimeout(() => setMessage(""), 2000);
 }
 
   return (
