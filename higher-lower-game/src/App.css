@@ -64,10 +64,12 @@ html, body, #root {
   background-position: center;
   filter: brightness(0.5);
   z-index: 0;
-  transition: filter 0.3s ease;
+  transform: scale(1);
+  transition: transform 0.5s ease, filter 0.3s ease;
 }
 
 .option:hover::before {
+  transform: scale(1.05);
   filter: brightness(0.8);
 }
 

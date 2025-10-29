@@ -5,8 +5,8 @@ export const QUESTIONS: Question[] = [
     id: 1,
     question: "Welche Website ist älter?",
     options: [
-      { text: "Welt", isCorrect: true, imageUrl: "/assets/welt.png", },
-      { text: "Bild", isCorrect: false, imageUrl: "/assets/bild.png", },
+      { text: "Welt", isCorrect: true, imageUrl: "/images/welt.png", },
+      { text: "Bild", isCorrect: false, imageUrl: "/images/bild.png", },
       
     ],
   },

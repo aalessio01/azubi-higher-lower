@@ -24,7 +24,7 @@ export default function App(): JSX.Element {
 
   return (
    <div className="quiz-container">
-    <h2 className="question">{question.question}</h2>
+  <h2 className="question">{question.question}</h2>
 
   <div className="options">
     {question.options.map((option, index) => (
