@@ -175,3 +175,34 @@ html, body, #root {
   0% { background: rgba(255, 0, 0, 0.5); }
   100% { background: rgba(255, 0, 0, 0); }
 }
+
+.feedback-container {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.correct-feedback {
+  background-color: rgba(0, 180, 0, 0.6);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+.incorrect-feedback {
+  background-color: rgba(200, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

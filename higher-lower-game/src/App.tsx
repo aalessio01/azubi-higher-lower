@@ -6,6 +6,7 @@ export default function App(): JSX.Element {
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [message, setMessage] = useState("");
+  const [isMessageCorrect, setIsMessageCorrect] = useState<boolean | null>(null);
   const [answered, setAnswered] = useState(false);
   const [showTryAgain, setShowTryAgain] = useState(false);
   const [highlightCorrect, setHighlightCorrect] = useState<number | null>(null);
@@ -16,18 +17,24 @@ export default function App(): JSX.Element {
     function handleAnswer(isCorrect: boolean, index: number) {
     if (answered || quizEnded) return;
     setAnswered(true);
+    const feedbackText = isCorrect
+    ? question.feedback.correct
+    : question.feedback.incorrect;
     if (isCorrect) {
       setScore((s) => s + 1);
-      setMessage("Richtig!");
+      setMessage(feedbackText);
+      setIsMessageCorrect(true);
       setHighlightCorrect(index);
       setTimeout(() => {
         setMessage("");
+        setIsMessageCorrect(null);
         setAnswered(false);
         setHighlightCorrect(null);
         setCurrent((i) => i + 1);
       }, 1500);
     } else {
-      setMessage("Falsch");
+      setMessage(feedbackText);
+      setIsMessageCorrect(false);
       setHighlightIncorrect(index);
       setShowTryAgain(true);
     }
@@ -35,6 +42,7 @@ export default function App(): JSX.Element {
 
   function handleTryAgain() {
     setMessage("");
+    setIsMessageCorrect(null);
     setShowTryAgain(false);
     setAnswered(false);
     setHighlightCorrect(null);
@@ -79,7 +87,11 @@ export default function App(): JSX.Element {
           </button>
         ))}
       </div>
-      {message && <div className="message">{message}</div>}
+      {message && (
+        <div className={`feedback-container ${isMessageCorrect ? "correct-feedback" : "incorrect-feedback"}`}>
+      {message}
+        </div>
+      )}
       {showTryAgain && (
         <button className="try-again-btn" onClick={handleTryAgain}>
           Erneut Versuchen
