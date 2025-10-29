@@ -1,50 +1,208 @@
-body {
-  background-color: #111;
-  color: white;
-  font-family: system-ui, sans-serif;
-  text-align: center;
+html, body, #root {
   margin: 0;
-  padding: 2rem;
-}
-
-h1 {
-  margin-bottom: 2rem;
-}
-
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 1rem;
-}
-
-.card {
-  background: #222;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  width: 150px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-button {
-  background: #444;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: system-ui, sans-serif;
+  background: radial-gradient(circle at center, #1a1a1a, #000);
   color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
 }
 
-button:hover {
-  background: #666;
+.quiz-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.question {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  flex-shrink: 0;
+}
+
+.options {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  gap: 0.75rem;
+  padding: 0 0.75rem;
+  box-sizing: border-box;
+}
+
+.option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  color: white;
+}
+
+.option::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-url);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+  z-index: 0;
+  transform: scale(1);
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.option:hover::before {
+  transform: scale(1.05);
+  filter: brightness(0.8);
+}
+
+.option span {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.message {
+  position: absolute;
+  bottom: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
 .score {
-  margin-top: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   font-weight: bold;
+  opacity: 0.8;
+}
+
+.option:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.try-again-btn {
+  position: absolute;
+  bottom: 5rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: 2px solid white;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.try-again-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.score-end {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.reset-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: 2px solid white;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.reset-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.option.correct::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 255, 0, 0.3);
+  z-index: 1;
+  border-radius: 0.75rem;
+  pointer-events: none;
+  animation: flashGreen 0.8s ease-out;
+}
+
+@keyframes flashGreen {
+  0% { background: rgba(0, 255, 0, 0.5); }
+  100% { background: rgba(0, 255, 0, 0); }
+}
+
+.option.incorrect::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 0, 0, 0.3);
+  z-index: 1;
+  border-radius: 0.75rem;
+  pointer-events: none;
+  animation: flashRed 0.8s ease-out;
+}
+
+@keyframes flashRed {
+  0% { background: rgba(255, 0, 0, 0.5); }
+  100% { background: rgba(255, 0, 0, 0); }
+}
+
+.feedback-container {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.correct-feedback {
+  background-color: rgba(0, 180, 0, 0.6);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+.incorrect-feedback {
+  background-color: rgba(200, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
