@@ -1,6 +1,5 @@
-export interface Item {
-    id: number;
-    name: string;
-    value: number;
-    imageUrl: string;
-}
+export type Question = {
+  id: number;
+  question: string;
+  options: { text: string; isCorrect: boolean; imageUrl: string; }[];
+};

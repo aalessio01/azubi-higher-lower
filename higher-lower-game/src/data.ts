@@ -1,9 +1,21 @@
-import type { Item } from "./types";
+import type { Question } from "./types";
 
-export const data: Item[] = [
-  { id: 1, name: "Alter", value: 300, imageUrl: "https://source.unsplash.com/featured/?social" },
-  { id: 2, name: "Beispiel1", value: 500, imageUrl: "https://source.unsplash.com/featured/?social" },
-  { id: 3, name: "Beispiel2", value: 400, imageUrl: "https://source.unsplash.com/featured/?social" },
-  { id: 4, name: "Beispiel3", value: 250, imageUrl: "https://source.unsplash.com/featured/?social" },
-  { id: 5, name: "Beispiel4", value: 150, imageUrl: "https://source.unsplash.com/featured/?social" },
+export const QUESTIONS: Question[] = [
+  {
+    id: 1,
+    question: "Welche Website ist älter?",
+    options: [
+      { text: "Welt", isCorrect: true, imageUrl: "/assets/welt.png", },
+      { text: "Bild", isCorrect: false, imageUrl: "/assets/bild.png", },
+      
+    ],
+  },
+  {
+    id: 2,
+    question: "Welches Land liegt in Europa?",
+    options: [
+      { text: "Brasilien", isCorrect: false, imageUrl: "/images/dolphin.jpg", },
+      { text: "Italien", isCorrect: true, imageUrl: "/images/dolphin.jpg", },
+    ],
+  },
 ];
