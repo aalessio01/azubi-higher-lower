@@ -100,3 +100,21 @@ html, body, #root {
   cursor: not-allowed;
   transform: none;
 }
+
+.try-again-btn {
+  position: absolute;
+  bottom: 5rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: 2px solid white;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.try-again-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+}

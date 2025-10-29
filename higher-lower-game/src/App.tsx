@@ -7,6 +7,7 @@ export default function App(): JSX.Element {
   const [score, setScore] = useState(0);
   const [message, setMessage] = useState("");
   const [answered, setAnswered] = useState(false);
+  const [showTryAgain, setShowTryAgain] = useState(false);
   const question = QUESTIONS[current];
 
     function handleAnswer(isCorrect: boolean) {
@@ -15,15 +16,21 @@ export default function App(): JSX.Element {
     if (isCorrect) {
       setScore((s) => s + 1);
       setMessage("Richtig!");
+      setTimeout(() => {
+        setMessage("");
+        setAnswered(false);
+        setCurrent((i) => (i + 1) % QUESTIONS.length);
+      }, 1500);
     } else {
       setMessage("Falsch");
+      setShowTryAgain(true);
     }
+  }
 
-    setTimeout(() => {
-      setMessage("");
-      setAnswered(false);
-      setCurrent((i) => (i + 1) % QUESTIONS.length);
-    }, 1500);
+  function handleTryAgain() {
+    setMessage("");
+    setShowTryAgain(false);
+    setAnswered(false);
   }
 
   return (
@@ -32,16 +39,23 @@ export default function App(): JSX.Element {
 
       <div className="options">
         {question.options.map((option, index) => (
-          <button key={`${question.id}-${index}`}
+          <button
+            key={`${question.id}-${index}`}
             className={`option ${index === 0 ? "left" : "right"}`}
             onClick={() => handleAnswer(option.isCorrect)}
             style={{ "--bg-url": `url(${option.imageUrl})` } as React.CSSProperties}
             disabled={answered}>
-    <span>{option.text}</span>
-  </button>
-    ))}
+            <span>{option.text}</span>
+          </button>
+        ))}
       </div>
       {message && <div className="message">{message}</div>}
+      {showTryAgain && (
+        <button className="try-again-btn" onClick={handleTryAgain}>
+          Erneut Versuchen
+        </button>
+      )}
+
       <div className="score">Score: {score}</div>
     </div>
   );
