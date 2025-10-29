@@ -3,7 +3,7 @@ html, body, #root {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: system-ui, sans-serif;
+  font-family: "Montas", sans-serif;
   background: radial-gradient(circle at center, #1a1a1a, #000);
   color: white;
 }
@@ -20,6 +20,7 @@ html, body, #root {
 }
 
 .question {
+  font-family: "Montas", sans-serif;
   text-align: center;
   font-size: 1.8rem;
   font-weight: 700;
@@ -40,6 +41,7 @@ html, body, #root {
 }
 
 .option {
+  font-family: "Montas", sans-serif;
   flex: 1;
   display: flex;
   align-items: center;
@@ -75,11 +77,16 @@ html, body, #root {
 
 .option span {
   position: relative;
-  z-index: 1;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  font-family: "Montas", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
 }
 
 .message {
+  font-family: "Montas", sans-serif;
   position: absolute;
   bottom: 2rem;
   text-align: center;
@@ -88,6 +95,7 @@ html, body, #root {
 }
 
 .score {
+  font-family: "Montas", sans-serif;
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -102,6 +110,7 @@ html, body, #root {
 }
 
 .try-again-btn {
+  font-family: "Montas", sans-serif;
   position: absolute;
   bottom: 5rem;
   padding: 1rem 2rem;
@@ -120,6 +129,7 @@ html, body, #root {
 }
 
 .score-end {
+  font-family: "Montas", sans-serif;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
@@ -127,6 +137,7 @@ html, body, #root {
 }
 
 .reset-btn {
+  font-family: "Montas", sans-serif;
   display: block;
   margin: 0 auto;
   padding: 1rem 2rem;
@@ -145,6 +156,7 @@ html, body, #root {
 }
 
 .option.correct::after {
+  font-family: "Montas", sans-serif;
   content: "";
   position: absolute;
   inset: 0;
@@ -161,6 +173,7 @@ html, body, #root {
 }
 
 .option.incorrect::after {
+  font-family: "Montas", sans-serif;
   content: "";
   position: absolute;
   inset: 0;
@@ -177,6 +190,7 @@ html, body, #root {
 }
 
 .feedback-container {
+  font-family: "Montas", sans-serif;
   margin-top: 1rem;
   padding: 1rem 2rem;
   border-radius: 0.75rem;
