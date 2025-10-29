@@ -8,10 +8,11 @@ export default function App(): JSX.Element {
   const [message, setMessage] = useState("");
   const [answered, setAnswered] = useState(false);
   const [showTryAgain, setShowTryAgain] = useState(false);
-  const question = QUESTIONS[current];
+  
+  const quizEnded = current >= QUESTIONS.length;
 
     function handleAnswer(isCorrect: boolean) {
-    if (answered) return;
+    if (answered || quizEnded) return;
     setAnswered(true);
     if (isCorrect) {
       setScore((s) => s + 1);
@@ -19,7 +20,7 @@ export default function App(): JSX.Element {
       setTimeout(() => {
         setMessage("");
         setAnswered(false);
-        setCurrent((i) => (i + 1) % QUESTIONS.length);
+        setCurrent((i) => i + 1);
       }, 1500);
     } else {
       setMessage("Falsch");
@@ -32,6 +33,28 @@ export default function App(): JSX.Element {
     setShowTryAgain(false);
     setAnswered(false);
   }
+
+  function handleResetQuiz() {
+    setScore(0);
+    setCurrent(0);
+    setMessage("");
+    setAnswered(false);
+    setShowTryAgain(false);
+  }
+
+  if (quizEnded) {
+    return (
+      <div className="quiz-container">
+        <h2 className="question">Quiz beendet!</h2>
+        <p className="score-end">Fragen beantwortet: {score}/?</p>
+        <button className="reset-btn" onClick={handleResetQuiz}>
+          Erneut starten
+        </button>
+      </div>
+    );
+  }
+
+  const question = QUESTIONS[current];
 
   return (
    <div className="quiz-container">
