@@ -6,9 +6,12 @@ export default function App(): JSX.Element {
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [message, setMessage] = useState("");
+  const [answered, setAnswered] = useState(false);
   const question = QUESTIONS[current];
 
     function handleAnswer(isCorrect: boolean) {
+    if (answered) return;
+    setAnswered(true);
     if (isCorrect) {
       setScore((s) => s + 1);
       setMessage("Richtig!");
@@ -18,33 +21,28 @@ export default function App(): JSX.Element {
 
     setTimeout(() => {
       setMessage("");
+      setAnswered(false);
       setCurrent((i) => (i + 1) % QUESTIONS.length);
     }, 1500);
   }
 
   return (
    <div className="quiz-container">
-  <h2 className="question">{question.question}</h2>
+      <h2 className="question">{question.question}</h2>
 
-  <div className="options">
-    {question.options.map((option, index) => (
-      <button
-        key={index}
-        className={`option ${index === 0 ? "left" : "right"}`}
-        onClick={() => handleAnswer(option.isCorrect)}
-        style={
-          {
-            "--bg-url": `url('${option.imageUrl}')`,
-          } as React.CSSProperties
-        }
-      >
-        <span>{option.text}</span>
-      </button>
+      <div className="options">
+        {question.options.map((option, index) => (
+          <button key={`${question.id}-${index}`}
+            className={`option ${index === 0 ? "left" : "right"}`}
+            onClick={() => handleAnswer(option.isCorrect)}
+            style={{ "--bg-url": `url(${option.imageUrl})` } as React.CSSProperties}
+            disabled={answered}>
+    <span>{option.text}</span>
+  </button>
     ))}
-  </div>
-
-  <div className="message">{message}</div>
-  <div className="score">Score: {score}</div>
-</div>
+      </div>
+      {message && <div className="message">{message}</div>}
+      <div className="score">Score: {score}</div>
+    </div>
   );
 }
