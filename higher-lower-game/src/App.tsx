@@ -8,22 +8,27 @@ export default function App(): JSX.Element {
   const [message, setMessage] = useState("");
   const [answered, setAnswered] = useState(false);
   const [showTryAgain, setShowTryAgain] = useState(false);
+  const [highlightCorrect, setHighlightCorrect] = useState<number | null>(null);
+  const [highlightIncorrect, setHighlightIncorrect] = useState<number | null>(null);
   
   const quizEnded = current >= QUESTIONS.length;
 
-    function handleAnswer(isCorrect: boolean) {
+    function handleAnswer(isCorrect: boolean, index: number) {
     if (answered || quizEnded) return;
     setAnswered(true);
     if (isCorrect) {
       setScore((s) => s + 1);
       setMessage("Richtig!");
+      setHighlightCorrect(index);
       setTimeout(() => {
         setMessage("");
         setAnswered(false);
+        setHighlightCorrect(null);
         setCurrent((i) => i + 1);
       }, 1500);
     } else {
       setMessage("Falsch");
+      setHighlightIncorrect(index);
       setShowTryAgain(true);
     }
   }
@@ -32,6 +37,8 @@ export default function App(): JSX.Element {
     setMessage("");
     setShowTryAgain(false);
     setAnswered(false);
+    setHighlightCorrect(null);
+    setHighlightIncorrect(null);
   }
 
   function handleResetQuiz() {
@@ -64,11 +71,11 @@ export default function App(): JSX.Element {
         {question.options.map((option, index) => (
           <button
             key={`${question.id}-${index}`}
-            className={`option ${index === 0 ? "left" : "right"}`}
-            onClick={() => handleAnswer(option.isCorrect)}
+            className={`option ${index === 0 ? "left" : "right"} ${highlightCorrect === index ? "correct" : ""} ${highlightIncorrect === index ? "incorrect" : ""}`}
+            onClick={() => handleAnswer(option.isCorrect, index)}
             style={{ "--bg-url": `url(${option.imageUrl})` } as React.CSSProperties}
             disabled={answered}>
-            <span>{option.text}</span>
+          <span>{option.text}</span>
           </button>
         ))}
       </div>
@@ -78,8 +85,7 @@ export default function App(): JSX.Element {
           Erneut Versuchen
         </button>
       )}
-
-      <div className="score">Score: {score}</div>
+      <div className="score">Beantwortete Fragen: {score}/?</div>
     </div>
   );
 }

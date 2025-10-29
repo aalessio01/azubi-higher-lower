@@ -143,3 +143,35 @@ html, body, #root {
   transform: scale(1.05);
   background: rgba(255, 255, 255, 0.2);
 }
+
+.option.correct::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 255, 0, 0.3);
+  z-index: 1;
+  border-radius: 0.75rem;
+  pointer-events: none;
+  animation: flashGreen 0.8s ease-out;
+}
+
+@keyframes flashGreen {
+  0% { background: rgba(0, 255, 0, 0.5); }
+  100% { background: rgba(0, 255, 0, 0); }
+}
+
+.option.incorrect::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 0, 0, 0.3);
+  z-index: 1;
+  border-radius: 0.75rem;
+  pointer-events: none;
+  animation: flashRed 0.8s ease-out;
+}
+
+@keyframes flashRed {
+  0% { background: rgba(255, 0, 0, 0.5); }
+  100% { background: rgba(255, 0, 0, 0); }
+}
