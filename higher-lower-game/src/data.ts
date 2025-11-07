@@ -171,7 +171,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 15,
-    question: "Wann wurde die Website von Welt erstmals mobiloptimiert?",
+    question: "Wann wurde die Website von WELT erstmals mobiloptimiert?",
     options: [
       { text: "2014", isCorrect: true, imageUrl: "/images/2014.png", },
       { text: "2008", isCorrect: false, imageUrl: "/images/2008.png", },
