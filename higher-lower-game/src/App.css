@@ -42,6 +42,12 @@ body,
   box-sizing: border-box;
 }
 
+@media screen and (width < 700px) {
+  .options {
+    flex-direction: column;
+  }
+}
+
 .option {
   font-family: "Montas", sans-serif;
   flex: 1;
