@@ -51,13 +51,13 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 5,
-    question: "Seit wann wurde digitale Arbeit gegenüber analoger Arbeit priorisiert?",
+    question: "Seit wann wurde digitale Arbeit gegenüber analoger Arbeit priorisiert (online first)?",
     options: [
-      { text: "2012", isCorrect: true, imageUrl: "/images/2012.png", },
+      { text: "2006", isCorrect: true, imageUrl: "/images/2012.png", },
       { text: "2016", isCorrect: false, imageUrl: "/images/2016.png", },
     ],
     feedback: {
-      correct: "Richtig – seit 2012 wurden Strategien zur Piorisierung der digitalen Arbeit durchgesetzt",
+      correct: "Richtig – seit 2006 wurden Strategien zur Piorisierung der digitalen Arbeit durchgesetzt",
       incorrect: "Falsch - zu dieser Zeit war die Priorisierung digitaler Arbeit bereits längst erfolgt",
     },
   },
@@ -75,18 +75,6 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 7,
-    question: "Was war eine zentrale Herausforderung des Online-Zeitalters?",
-    options: [
-      { text: "Layout der Printseiten", isCorrect: false, imageUrl: "/images/print.png", },
-      { text: "Verifikation von Online-Quellen", isCorrect: true, imageUrl: "/images/verify.png", },
-    ],
-    feedback: {
-      correct: "Richtig – das Verifizieren von jeglichen Onlinequellen war eine große anstehende Umstellung",
-      incorrect: "Falsch - das Thema war im Online-Zeitalter längst nicht mehr die größte Herausforderung",
-    },
-  },
-  {
-    id: 8,
     question: "Welche Funktion wurde auf Bild.de zuerst eingeführt?",
     options: [
       { text: "Kommentarfunktion", isCorrect: false, imageUrl: "/images/comment.png", },
@@ -98,19 +86,19 @@ export const QUESTIONS: Question[] = [
     },
   },
   {
-    id: 9,
+    id: 8,
     question: "Welche technische Neuerung machte die tägliche Zusammenarbeit einfacher?",
     options: [
       { text: "zentraler Server", isCorrect: true, imageUrl: "/images/server.png", },
-      { text: "Austausch von Disketten", isCorrect: false, imageUrl: "/images/disketten.png", },
+      { text: "bessere Drucker", isCorrect: false, imageUrl: "/images/drucker.png", },
     ],
     feedback: {
       correct: "Richtig – zentrale Server vereinfachten die Zusammenarbeit enorm",
-      incorrect: "Falsch - diese Methode war umständlich und verlangsamte die Zusammenarbeit",
+      incorrect: "Falsch - Ein besserer Drucker verbessert nur das Ausdrucken von Dokumenten, ermöglicht aber keine gemeinsame Nutzung oder gleichzeitige Bearbeitung von Dateien",
     },
   },
   {
-    id: 10,
+    id: 9,
     question: "Welche technische Innovation erhöhte die Reichweite von Online-Inhalten?",
     options: [
       { text: "Social-Media-Verlinkungen", isCorrect: true, imageUrl: "/images/socials.png", },
@@ -122,7 +110,7 @@ export const QUESTIONS: Question[] = [
     },
   },
   {
-    id: 11,
+    id: 10,
     question: "Welche Datenart wurde zuerst systematisch digital archiviert?",
     options: [
       { text: "Texte", isCorrect: true, imageUrl: "/images/text.png", },
@@ -134,7 +122,7 @@ export const QUESTIONS: Question[] = [
     },
   },
   {
-    id: 12,
+    id: 11,
     question: "Welche technische Entwicklung beschleunigte die Fotoübertragung entscheidend?",
     options: [
       { text: "Scanner", isCorrect: false, imageUrl: "/images/scanner.png", },
@@ -146,7 +134,7 @@ export const QUESTIONS: Question[] = [
     },
   },
   {
-    id: 13,
+    id: 12,
     question: "Welche Geräte wurden zuerst vernetzt?",
     options: [
       { text: "Telefone", isCorrect: false, imageUrl: "/images/telefon.png", },
@@ -158,7 +146,7 @@ export const QUESTIONS: Question[] = [
     },
   },
   {
-    id: 14,
+    id: 13,
     question: "Welche Kommunikationsform setzte sich im Redaktionsalltag durch?",
     options: [
       { text: "E-Mail", isCorrect: true, imageUrl: "/images/e-mail.png", },
@@ -170,8 +158,8 @@ export const QUESTIONS: Question[] = [
     },
   },
   {
-    id: 15,
-    question: "Wann wurde die Website von WELT erstmals mobiloptimiert?",
+    id: 14,
+    question: "Wann wurde die Website von WELT vollständig mobiloptimiert?",
     options: [
       { text: "2014", isCorrect: true, imageUrl: "/images/2014.png", },
       { text: "2008", isCorrect: false, imageUrl: "/images/2008.png", },
@@ -179,6 +167,18 @@ export const QUESTIONS: Question[] = [
     feedback: {
       correct: "Richtig – 2014 wurden Inhalte responsiv gestaltet, um auf Smartphones und Tablets zu funktionieren",
       incorrect: "Falsch - 2008 war Mobile-Optimierung noch kaum umgesetzt",
+    },
+  },
+  {
+    id: 15,
+    question: "Wann verlieh das Haus Axel Springer erstmals einen KI-Preis?",
+    options: [
+      { text: "2024", isCorrect: false, imageUrl: "/images/2024.png", },
+      { text: "2019", isCorrect: true, imageUrl: "/images/2019.png", },
+    ],
+    feedback: {
+      correct: "Richtig – durch das damals zu uns gehörende Wirtschaftsmagazin „Bilanz“ wurde der Preis erstmals vergeben",
+      incorrect: "Falsch - zu der Zeit wurde der KI Preis schon zum sechsten Mal vergeben",
     },
   }
 ];
